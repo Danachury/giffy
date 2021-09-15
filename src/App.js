@@ -1,20 +1,28 @@
 import './App.css'
-import ListOfGifs from './components/ListOfGifs'
 import { Link, Route } from 'wouter'
+import Home from './pages/Home'
+import Detail from './pages/Detail'
+import SearchResults from './pages/SearchResults'
+import StaticContext from './contexts/StaticContext'
+import { GifsContextProvider } from './contexts/GifsContext'
 
 function App() {
   return (
-    <div className="App">
-      <section className="App-content">
-        <h1>App</h1>
-        <Link to="/gif/colombia" className="App-link">Gifs Colombia</Link>
-        <Link to="/gif/nadal" className="App-link">Gifs Nadal</Link>
-        <Link to="/gif/nacional" className="App-link">Gifs Nacional</Link>
-        <Link to="/gif/eeuu" className="App-link">Gifs Unite States</Link>
-        <Link to="/gif/panda" className="App-link">Gifs Pandas</Link>
-        <Route path="/gif/:filter" component={ListOfGifs}/>
-      </section>
-    </div>
+    <StaticContext.Provider value={{
+      name: 'danachury',
+      cool: true
+    }}>
+      <div className="App">
+        <section className="App-content">
+          <Link to="/" className="App-link">GIFFY</Link>
+          <GifsContextProvider>
+            <Route path="/" component={Home}/>
+            <Route path="/search/:filter" component={SearchResults}/>
+            <Route path="/gif/:id" component={Detail}/>
+          </GifsContextProvider>
+        </section>
+      </div>
+    </StaticContext.Provider>
   )
 }
 
