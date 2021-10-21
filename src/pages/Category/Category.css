@@ -1,0 +1,6 @@
+.Category-item {
+    margin: 0 0 .4em;
+    line-height: 1em;
+    text-align: left;
+    font-size: calc(4px + 2vmin);
+}

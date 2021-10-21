@@ -10,11 +10,13 @@ function App() {
   return (
     <StaticContext.Provider value={{
       name: 'danachury',
-      cool: true
+      dev: true
     }}>
       <div className="App">
         <section className="App-content">
-          <Link to="/" className="App-link">GIFFY</Link>
+          <div className="App-logo">
+            <Link to="/">GIFFY</Link>
+          </div>
           <GifsContextProvider>
             <Route path="/" component={Home}/>
             <Route path="/search/:filter" component={SearchResults}/>

@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'wouter'
 
+import('./Category.css')
+
 export default function Category({ name, options }) {
-  const optionsLink = options.map(opt => <Link to={`/search/${opt}`}>{opt}</Link>)
+  const categoryItems = options
+    .map(opt => <div key={opt} className="Category-item"><Link to={`/search/${opt}`}>{opt}</Link></div>)
   return (
     <>
-      <div>{name}</div>
-      {optionsLink}
+      <h1>{name}</h1>
+      {categoryItems}
     </>
   )
 }
